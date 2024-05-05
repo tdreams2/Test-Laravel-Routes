@@ -1,8 +1,8 @@
 <?php
 
+use App\Http\Controllers\Api\V1\TaskController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\TaskController;
 
 /*
 |--------------------------------------------------------------------------
@@ -19,16 +19,17 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-Route::group(['middleware' => 'auth:sanctum'], function() {
+Route::group(['middleware' => 'auth:sanctum'], function () {
     // Task 12: Manage tasks with endpoint /api/v1/tasks/*****.
     // Keep in mind that prefix should be /api/v1.
     // Add ONE line to assign 5 resource routes to TaskController
     // Put one code line here below
-    Route::group(['prefix' => 'api/v1', 'middleware' => 'auth:sanctum'], function () {
-        // Task 12: Resource routes for tasks, excluding 'create' and 'edit'
-        Route::resource('tasks', TaskController::class)->only([
-            'index', 'store', 'show', 'update', 'destroy'
-        ]);
-    });
-
+    Route::group(
+        ['prefix' => 'v1', 'middleware' => 'auth:sanctum'],
+        function () {
+            Route::resource('tasks', TaskController::class)->only([
+                'index', 'store', 'show', 'update', 'destroy'
+            ]);
+        }
+    );
 });
