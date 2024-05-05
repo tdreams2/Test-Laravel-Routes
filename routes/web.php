@@ -1,7 +1,9 @@
 <?php
 
+use App\Http\Controllers\DashboardController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\TaskController;
 use App\Http\Controllers\UserController;
 
 /*
@@ -97,10 +99,10 @@ Route::middleware('auth')->group(
 );
 
 
-    // End of the /admin Route Group
+// End of the /admin Route Group
 
 // End of the main Authenticated Route Group
 
 // One more task is in routes/api.php
 
-require __DIR__.'/auth.php';
+require __DIR__ . '/auth.php';
